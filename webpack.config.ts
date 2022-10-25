@@ -1,8 +1,12 @@
+// @ts-nocheck
 import webpack from "webpack";
 import webpackDevServer from "webpack-dev-server";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import path from "path";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import postCssAutoprefixer from "autoprefixer";
+import postCssImport from "postcss-import";
+import postCssPresetEnv from "postcss-preset-env";
 
 interface Configuration extends webpack.Configuration {
   devServer: webpackDevServer.Configuration;
@@ -36,6 +40,40 @@ const config: Configuration = {
         include: [sourcePath],
         test: /\.(j|t)sx?$/,
         use: ["babel-loader"],
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          { loader: "style-loader" },
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              modules: {
+                exportLocalsConvention: "camelCase",
+                mode: "local",
+                localIdentName: "[path][name]__[local]",
+              },
+            },
+          },
+          {
+            loader: "postcss-loader",
+            options: {
+              postcssOptions: {
+                plugins: [
+                  postCssAutoprefixer(),
+                  postCssImport({ path: sourcePath }),
+                  postCssPresetEnv({
+                    features: {
+                      "nesting-rules": true,
+                    },
+                  }),
+                ],
+              },
+            },
+          },
+        ],
       },
     ],
   },

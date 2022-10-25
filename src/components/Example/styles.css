@@ -1,0 +1,9 @@
+.root {
+  appearance: none;
+  box-sizing: border-box;
+  background-color: aqua;
+
+  & .default {
+    color: #fc0;
+  }
+}

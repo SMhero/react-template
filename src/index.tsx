@@ -5,6 +5,7 @@ import App from "components/App/App";
 
 const container = document.getElementById("root");
 const root = createRoot(container as HTMLDivElement);
+
 const renderApp = () => {
   root.render(
     <StrictMode>
