@@ -23,7 +23,9 @@
     "target": "es5",
     "paths": {
       "*": ["node_modules/@types", "./types/*"],
+      "assets/*": ["./assets/*"],
       "components/*": ["./components/*"],
+      "modules/*": ["./modules/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],

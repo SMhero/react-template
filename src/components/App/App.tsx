@@ -1,10 +1,10 @@
-import ErrorBoundary from "components/ErrorBoundary/ErrorBoundary";
-import Example from "components/Example/Example";
+import ErrorBoundary from "modules/ErrorBoundary/ErrorBoundary";
+import Template from "components/Template/Template";
 
 const App = () => {
   return (
     <ErrorBoundary>
-      <Example />
+      <Template />
     </ErrorBoundary>
   );
 };

@@ -4,3 +4,7 @@ declare module "*.css" {
   };
   export default classes;
 }
+
+declare module "*.svg";
+declare module "*.png";
+declare module "*.jpg";

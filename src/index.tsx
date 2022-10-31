@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 
 import App from "components/App/App";
 
+import "./assets/css/global.css";
+
 const container = document.getElementById("root");
 const root = createRoot(container as HTMLDivElement);
 
