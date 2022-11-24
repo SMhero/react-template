@@ -76,12 +76,21 @@ const config: Configuration = {
         ],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|jpg|jpeg|gif|ico)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        resourceQuery: { not: [/url/] },
+        use: ["@svgr/webpack"],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
+        generator: {
+          filename: "fonts/[name][ext][query]",
+        },
       },
     ],
   },

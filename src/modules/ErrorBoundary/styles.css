@@ -1,0 +1,18 @@
+.root {
+  height: 100vh;
+  margin: 0 auto;
+  max-width: 588px;
+  width: 100%;
+}
+
+.title {
+  margin: 32px 0 24px;
+  text-align: center;
+}
+
+.description {
+  background-color: var(--color-error);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}

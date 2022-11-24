@@ -12,10 +12,11 @@
   padding: 16px 0;
 
   & .title-text {
-    margin-left: 16px
+    margin-left: 16px;
   }
 
-  & .image {
+  & .logo {
+    color: var(--color-highlight);
     max-width: 100px;
   }
 }

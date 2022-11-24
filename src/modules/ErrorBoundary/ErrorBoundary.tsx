@@ -1,5 +1,7 @@
 import { Component, ErrorInfo } from "react";
 
+import styles from "./styles.css";
+
 type Props = {
   children: React.ReactNode;
 };
@@ -30,12 +32,14 @@ class ErrorBoundary extends Component<Props, State> {
   render() {
     if (this.state.hasError) {
       return (
-        <>
-          <h1>Something went wrong...</h1>
+        <div className={styles.root}>
+          <h1 className={styles.title}>Something went wrong...</h1>
           {this.state.error ? (
-            <div>Error: {this.state.error.message}</div>
+            <div className={styles.description}>
+              <code>Error: {this.state.error.message}</code>
+            </div>
           ) : null}
-        </>
+        </div>
       );
     }
 

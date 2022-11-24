@@ -1,39 +1,31 @@
 @font-face {
-  font-family: "Open Sans";
+  font-family: "Ubuntu";
   font-style: normal;
   font-weight: 300;
-  src: url('../fonts/OpenSans-Light.ttf') format('ttf');
+  src: url("../fonts/Ubuntu-Light.ttf") format("truetype");
   font-display: block;
 }
 
 @font-face {
-  font-family: "Open Sans";
+  font-family: "Ubuntu";
   font-style: normal;
   font-weight: 400;
-  src: url('../fonts/OpenSans-Regular.ttf') format('ttf');
+  src: url("../fonts/Ubuntu-Regular.ttf") format("truetype");
   font-display: block;
 }
 
 @font-face {
-  font-family: "Open Sans";
+  font-family: "Ubuntu";
   font-style: normal;
   font-weight: 500;
-  src: url('../fonts/OpenSans-Medium.ttf') format('ttf');
+  src: url("../fonts/Ubuntu-Medium.ttf") format("truetype");
   font-display: block;
 }
 
 @font-face {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 600;
-  src: url('../fonts/OpenSans-SemiBold.ttf') format('ttf');
-  font-display: block;
-}
-
-@font-face {
-  font-family: "Open Sans";
+  font-family: "Ubuntu";
   font-style: normal;
   font-weight: 700;
-  src: url('../fonts/OpenSans-Bold.ttf') format('ttf');
+  src: url("../fonts/Ubuntu-Bold.ttf") format("truetype");
   font-display: block;
 }

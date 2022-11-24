@@ -1,9 +1,11 @@
-@import 'normalize.css';
-@import 'fonts.css';
+@import "normalize.css";
+@import "fonts.css";
+@import "variables.css";
 
 body {
-  color: #000000;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-white);
+  font-family: var(--font-family);
   height: 100vh;
   width: 100%;
 }
