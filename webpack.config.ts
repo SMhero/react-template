@@ -1,8 +1,10 @@
 // @ts-nocheck
+import path from "path";
 import webpack from "webpack";
 import webpackDevServer from "webpack-dev-server";
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import path from "path";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import postCssAutoprefixer from "autoprefixer";
 import postCssImport from "postcss-import";
@@ -12,14 +14,11 @@ interface Configuration extends webpack.Configuration {
   devServer: webpackDevServer.Configuration;
 }
 
+const isProd = process.env.NODE_ENV === "production";
 const sourcePath = path.join(__dirname, "src");
-const devtool =
-  process.env.NODE === "development"
-    ? "source-map"
-    : "eval-cheap-module-source-map";
-const mode =
-  process.env.NODE_ENV !== "production" ? "development" : "production";
-const hints = process.env.NODE_ENV !== "production" ? false : "warning";
+const devtool = isProd ? "eval-cheap-module-source-map" : "source-map";
+const mode = isProd ? "production" : "development";
+const hints = isProd ? "warning" : false;
 
 const config: Configuration = {
   devtool,
@@ -45,7 +44,9 @@ const config: Configuration = {
         test: /\.css$/,
         exclude: /node_modules/,
         use: [
-          { loader: "style-loader" },
+          isProd
+            ? { loader: MiniCssExtractPlugin.loader }
+            : { loader: "style-loader" },
           {
             loader: "css-loader",
             options: {
@@ -101,12 +102,16 @@ const config: Configuration = {
   },
   plugins: [
     new HtmlWebpackPlugin({
+      inject: "body",
       title: "React Template",
       template: path.join(__dirname, "index.html"),
       favicon: path.join(sourcePath, "/assets/favicon.ico"),
     }),
     // new BundleAnalyzerPlugin(),
   ],
+  optimization: {
+    minimizer: isProd ? [new CssMinimizerPlugin()] : [],
+  },
   devServer: {
     compress: true,
     historyApiFallback: true,

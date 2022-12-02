@@ -14,9 +14,9 @@
   & .title-text {
     margin-left: 16px;
   }
+}
 
-  & .logo {
-    color: var(--color-highlight);
-    max-width: 100px;
-  }
+.logo {
+  color: var(--color-highlight);
+  max-width: 100px;
 }

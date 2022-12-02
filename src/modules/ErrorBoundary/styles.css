@@ -16,3 +16,7 @@
   padding: 16px;
   text-align: center;
 }
+
+.code {
+  color: var(--color-white)
+}

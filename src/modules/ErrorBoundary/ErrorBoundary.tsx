@@ -4,6 +4,7 @@ import styles from "./styles.css";
 
 type Props = {
   children: React.ReactNode;
+  onError?: (data?: Record<string, unknown>) => void;
 };
 
 type State = {
@@ -21,12 +22,18 @@ class ErrorBoundary extends Component<Props, State> {
     };
   }
 
+  static defaultProps: Pick<Props, "onError"> = {
+    onError: undefined,
+  };
+
   static getDerivedStateFromError(error: Error) {
     return { error, hasError: true };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     console.warn(error, errorInfo);
+
+    this.props?.onError?.();
   }
 
   render() {
@@ -36,7 +43,9 @@ class ErrorBoundary extends Component<Props, State> {
           <h1 className={styles.title}>Something went wrong...</h1>
           {this.state.error ? (
             <div className={styles.description}>
-              <code>Error: {this.state.error.message}</code>
+              <code className={styles.code}>
+                Error: {this.state.error.message}
+              </code>
             </div>
           ) : null}
         </div>

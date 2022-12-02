@@ -7,6 +7,15 @@
     }
   },
   "compilerOptions": {
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "dashes",
+          "customMatcher": "\\.css$"
+        }
+      }
+    ],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "src",
@@ -28,7 +37,7 @@
       "modules/*": ["./modules/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"],
   "exclude": [
     "node_modules",
     "build",
