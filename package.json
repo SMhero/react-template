@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "lint:css": "`npm bin`/stylelint \"src/**/*.css\" --formatter verbose",
-    "lint:js": "`npm bin`/eslint src --ext .ts --ext .tsx --quiet",
+    "lint:js": "`npm bin`/eslint src \"src/**/*.{ts,tsx}\" --quiet",
     "lint": "npm run lint:js && npm run lint:css",
+    "prettier:check": "`npm bin`/prettier --check \"src/**/*.{ts,tsx,css}\"",
+    "prettier:write": "`npm bin`/prettier --write \"src/**/*.{ts,tsx,css}\"",
     "start": "NODE_ENV=development webpack serve --config webpack.config.ts"
   },
   "repository": {
@@ -49,9 +51,11 @@
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "eslint": "^8.28.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.5.2",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "^5.5.0",
@@ -59,11 +63,14 @@
     "postcss-import": "^15.0.0",
     "postcss-loader": "^7.0.1",
     "postcss-preset-env": "^7.8.2",
+    "prettier": "^2.8.0",
     "style-loader": "^3.3.1",
     "stylelint": "^14.15.0",
+    "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-standard": "^29.0.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.3",
+    "typescript-plugin-css-modules": "^4.1.1",
     "webpack": "^5.74.0",
     "webpack-bundle-analyzer": "^4.6.1",
     "webpack-cli": "^4.10.0",
@@ -72,7 +79,6 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "typescript-plugin-css-modules": "^3.4.0"
+    "react-dom": "^18.2.0"
   }
 }

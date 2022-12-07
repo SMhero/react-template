@@ -1,6 +1,5 @@
 module.exports = {
-  extends: "stylelint-config-recommended",
-  ignoreFiles: "**/*.tsx",
+  extends: ["stylelint-config-recommended", "stylelint-config-prettier"],
   rules: {
     "color-hex-length": "long",
     "number-leading-zero": "always",

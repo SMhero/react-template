@@ -1,4 +1,3 @@
-// @ts-nocheck
 import path from "path";
 import webpack from "webpack";
 import webpackDevServer from "webpack-dev-server";

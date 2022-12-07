@@ -13,6 +13,14 @@ type State = {
 };
 
 class ErrorBoundary extends Component<Props, State> {
+  static getDerivedStateFromError(error: Error) {
+    return { error, hasError: true };
+  }
+
+  static defaultProps = {
+    onError: undefined,
+  };
+
   constructor(props: Props) {
     super(props);
 
@@ -20,14 +28,6 @@ class ErrorBoundary extends Component<Props, State> {
       error: null,
       hasError: false,
     };
-  }
-
-  static defaultProps: Pick<Props, "onError"> = {
-    onError: undefined,
-  };
-
-  static getDerivedStateFromError(error: Error) {
-    return { error, hasError: true };
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {

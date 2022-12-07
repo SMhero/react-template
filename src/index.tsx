@@ -15,7 +15,7 @@ const renderApp = () => {
       <ErrorBoundary>
         <App />
       </ErrorBoundary>
-    </StrictMode>,
+    </StrictMode>
   );
 };
 
