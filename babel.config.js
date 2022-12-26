@@ -1,11 +1,11 @@
-module.exports = (api) => {
+module.exports = api => {
   api.cache.using(() => process.env.NODE_ENV === "production");
 
   return {
+    plugins: [["@babel/plugin-proposal-decorators", { legacy: true }]],
     env: {
       development: {
         plugins: [
-          ["@babel/plugin-proposal-decorators", { legacy: true }],
           ["@babel/plugin-proposal-class-properties"],
           ["@babel/plugin-transform-react-display-name"],
           [
@@ -39,7 +39,6 @@ module.exports = (api) => {
       },
       production: {
         plugins: [
-          ["@babel/plugin-proposal-decorators", { legacy: true }],
           ["@babel/plugin-proposal-class-properties"],
           [
             "babel-plugin-styled-components",

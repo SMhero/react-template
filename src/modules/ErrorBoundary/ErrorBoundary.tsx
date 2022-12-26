@@ -4,7 +4,7 @@ import styles from "./styles.css";
 
 type Props = {
   children: React.ReactNode;
-  onError?: (data?: Record<string, unknown>) => void;
+  onError?: <T extends Record<string, unknown>>(data?: T) => void;
 };
 
 type State = {

@@ -1,13 +1,13 @@
 import path from "path";
 import webpack from "webpack";
 import webpackDevServer from "webpack-dev-server";
-import HtmlWebpackPlugin from "html-webpack-plugin";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
-import postCssAutoprefixer from "autoprefixer";
-import postCssImport from "postcss-import";
-import postCssPresetEnv from "postcss-preset-env";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import TerserPlugin from "terser-webpack-plugin";
+// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+
+import externals from "./webpack/externals";
+import loaders from "./webpack/loaders";
 
 interface Configuration extends webpack.Configuration {
   devServer: webpackDevServer.Configuration;
@@ -15,11 +15,14 @@ interface Configuration extends webpack.Configuration {
 
 const isProd = process.env.NODE_ENV === "production";
 const sourcePath = path.join(__dirname, "src");
-const devtool = isProd ? "eval-cheap-module-source-map" : "source-map";
+const devtool = isProd ? "source-map" : "eval-cheap-module-source-map";
 const mode = isProd ? "production" : "development";
 const hints = isProd ? "warning" : false;
 
-const config: Configuration = {
+const externalsRules = externals(process.env.NODE_ENV);
+const loadersRules = loaders(process.env.NODE_ENV);
+
+const config = (): Configuration => ({
   devtool,
   entry: path.join(sourcePath, "index"),
   mode,
@@ -31,68 +34,9 @@ const config: Configuration = {
   performance: {
     hints,
   },
+  externals: externalsRules,
   module: {
-    rules: [
-      {
-        exclude: /(node_modules)/,
-        include: [sourcePath],
-        test: /\.(j|t)sx?$/,
-        use: ["babel-loader"],
-      },
-      {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [
-          isProd
-            ? { loader: MiniCssExtractPlugin.loader }
-            : { loader: "style-loader" },
-          {
-            loader: "css-loader",
-            options: {
-              importLoaders: 1,
-              modules: {
-                exportLocalsConvention: "camelCase",
-                mode: "local",
-                localIdentName: "[path][name]__[local]",
-              },
-            },
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              postcssOptions: {
-                plugins: [
-                  postCssAutoprefixer(),
-                  postCssImport({ path: sourcePath }),
-                  postCssPresetEnv({
-                    features: {
-                      "nesting-rules": true,
-                    },
-                  }),
-                ],
-              },
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpg|jpeg|gif|ico)$/i,
-        type: "asset/resource",
-      },
-      {
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        resourceQuery: { not: [/url/] },
-        use: ["@svgr/webpack"],
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: "asset/resource",
-        generator: {
-          filename: "fonts/[name][ext][query]",
-        },
-      },
-    ],
+    rules: loadersRules,
   },
   output: {
     clean: true,
@@ -109,14 +53,23 @@ const config: Configuration = {
     // new BundleAnalyzerPlugin(),
   ],
   optimization: {
-    minimizer: isProd ? [new CssMinimizerPlugin()] : [],
+    minimize: true,
+    minimizer: isProd
+      ? [
+          new CssMinimizerPlugin(),
+          new TerserPlugin({
+            test: /\.(j|t)sx?$/,
+          }),
+        ]
+      : [],
   },
   devServer: {
     compress: true,
     historyApiFallback: true,
+    hot: true,
     port: 3000,
     static: path.join(__dirname, "dist"),
   },
-};
+});
 
 export default config;
