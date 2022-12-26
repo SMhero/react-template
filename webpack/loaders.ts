@@ -4,8 +4,7 @@ import postCssAutoprefixer from "autoprefixer";
 import postCssImport from "postcss-import";
 import postCssPresetEnv from "postcss-preset-env";
 
-const sourcePath = path.join(__dirname, "../src");
-console.log(sourcePath);
+const sourcePath = path.join(__dirname, "..", "src");
 
 const loaders = (NODE_ENV: NodeJS.ProcessEnv["NODE_ENV"]) => [
   {
@@ -63,7 +62,12 @@ const loaders = (NODE_ENV: NodeJS.ProcessEnv["NODE_ENV"]) => [
     ],
   },
   {
-    test: /\.(png|jpg|jpeg|gif|ico)$/i,
+    test: /\.(png|jpe?g|gif|ico|webp)$/i,
+    parser: {
+      dataUrlCondition: {
+        maxSize: 25 * 1024, // 25kb
+      },
+    },
     type: "asset/resource",
   },
   {
@@ -80,5 +84,7 @@ const loaders = (NODE_ENV: NodeJS.ProcessEnv["NODE_ENV"]) => [
     },
   },
 ];
+
+console.log("Loaders is 'loading' 🧪");
 
 export default loaders;

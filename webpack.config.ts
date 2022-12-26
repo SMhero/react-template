@@ -2,12 +2,11 @@ import path from "path";
 import webpack from "webpack";
 import webpackDevServer from "webpack-dev-server";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import HtmlWebpackPlugin from "html-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
-// import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 import externals from "./webpack/externals";
 import loaders from "./webpack/loaders";
+import plugins from "./webpack/plugins";
 
 interface Configuration extends webpack.Configuration {
   devServer: webpackDevServer.Configuration;
@@ -21,6 +20,7 @@ const hints = isProd ? "warning" : false;
 
 const externalsRules = externals(process.env.NODE_ENV);
 const loadersRules = loaders(process.env.NODE_ENV);
+const pluginsRules = plugins(process.env.NODE_ENV);
 
 const config = (): Configuration => ({
   devtool,
@@ -40,18 +40,10 @@ const config = (): Configuration => ({
   },
   output: {
     clean: true,
-    filename: "[name].bundle.js",
+    filename: "js/chunk-[contenthash].js",
     path: path.resolve(__dirname, "dist"),
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      inject: "body",
-      title: "React Template",
-      template: path.join(__dirname, "index.html"),
-      favicon: path.join(sourcePath, "/assets/favicon.ico"),
-    }),
-    // new BundleAnalyzerPlugin(),
-  ],
+  plugins: pluginsRules,
   optimization: {
     minimize: true,
     minimizer: isProd

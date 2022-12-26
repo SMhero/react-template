@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Template for frontend applications based on ReactJS",
   "scripts": {
+    "build": "webpack --mode production --progress",
     "lint:css": "`npm bin`/stylelint \"src/**/*.css\" --formatter verbose",
     "lint:js": "`npm bin`/eslint src \"src/**/*.{ts,tsx}\" --quiet",
     "lint": "npm run lint:js && npm run lint:css",
@@ -49,6 +50,7 @@
     "@typescript-eslint/parser": "^5.44.0",
     "autoprefixer": "^10.4.12",
     "babel-loader": "^8.2.5",
+    "compression-webpack-plugin": "^10.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
     "eslint": "^8.28.0",
