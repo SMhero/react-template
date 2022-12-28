@@ -46,12 +46,7 @@ module.exports = api => {
             {
               corejs: 3.6,
               targets: {
-                browsers: [
-                  "last 2 versions",
-                  "> 0.2%",
-                  "not dead",
-                  "not ie <= 11",
-                ],
+                browsers: ["last 2 versions", "> 0.2%", "not dead"],
               },
               useBuiltIns: "entry",
             },
