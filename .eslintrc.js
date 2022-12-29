@@ -46,6 +46,50 @@ module.exports = {
         ignore: [".svg"],
       },
     ],
+    "import/order": [
+      1,
+      {
+        groups: [
+          "external",
+          "builtin",
+          "internal",
+          "sibling",
+          "parent",
+          "index",
+        ],
+        "newlines-between": "always-and-inside-groups",
+        pathGroups: [
+          {
+            pattern: "(react|react-router-dom|classnames)",
+            group: "builtin",
+          },
+          {
+            pattern: "(components|modules|pages)",
+            group: "internal",
+          },
+          {
+            pattern: "config/**",
+            group: "internal",
+            position: "after",
+          },
+          {
+            pattern: "assets/**",
+            group: "internal",
+            position: "after",
+          },
+          {
+            pattern: "typings/**",
+            group: "internal",
+            position: "after",
+          },
+        ],
+        alphabetize: {
+          order: "asc",
+          caseInsensitive: true,
+        },
+        warnOnUnassignedImports: true,
+      },
+    ],
     "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 1 }],
     "jsx-a11y/no-static-element-interactions": 0,
     "jsx-a11y/no-noninteractive-element-interactions": 0,
@@ -62,6 +106,13 @@ module.exports = {
           "everything-else",
           "render",
         ],
+      },
+    ],
+    "sort-imports": [
+      "error",
+      {
+        ignoreCase: true,
+        ignoreDeclarationSort: true,
       },
     ],
     "@typescript-eslint/ban-ts-comment": 0,

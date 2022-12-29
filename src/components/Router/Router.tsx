@@ -6,10 +6,11 @@ import {
 } from "react-router-dom";
 
 import Layout from "components/Layout/Layout";
-import Main from "pages/Main";
-import About from "pages/About/About";
 import Spinner from "components/Spinner/Spinner";
+import About from "pages/About/About";
+import Main from "pages/Main";
 import NotFound from "pages/NotFound";
+
 import { routes } from "config/routes";
 
 // @NOTE: just an example of loading page state

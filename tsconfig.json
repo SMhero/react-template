@@ -37,7 +37,8 @@
       "components/*": ["./components/*"],
       "config/*": ["./config/*"],
       "modules/*": ["./modules/*"],
-      "pages/*": ["./pages/*"]
+      "pages/*": ["./pages/*"],
+      "typings/*": ["./typings/*"]
     }
   },
   "include": [

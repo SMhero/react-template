@@ -1,7 +1,7 @@
-import { FC } from "react";
 import cn from "classnames";
-
+import { FC } from "react";
 import { NavLink } from "react-router-dom";
+
 import { routes } from "config/routes";
 
 import styles from "./styles.css";

@@ -5,7 +5,7 @@
   "scripts": {
     "build": "webpack --mode production --progress",
     "lint:css": "`npm bin`/stylelint \"src/**/*.css\" --formatter verbose",
-    "lint:js": "`npm bin`/eslint src \"src/**/*.{ts,tsx}\" --quiet",
+    "lint:js": "`npm bin`/eslint src \"src/**/*.{ts,tsx}\"",
     "lint": "npm run lint:js && npm run lint:css",
     "prettier:check": "`npm bin`/prettier --check \"src/**/*.{ts,tsx,css}\"",
     "prettier:write": "`npm bin`/prettier --write \"src/**/*.{ts,tsx,css}\"",
