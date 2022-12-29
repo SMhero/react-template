@@ -1,0 +1,22 @@
+.nav {
+  column-gap: 16px;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.item {
+  list-style-type: none;
+}
+
+.link {
+  border-bottom: 1px solid transparent;
+  color: var(--color-highlight);
+  padding-bottom: 4px;
+  text-decoration: none;
+  transition: border-bottom-color 0.16s ease-in-out;
+}
+
+.active {
+  border-bottom-color: var(--color-highlight);
+}

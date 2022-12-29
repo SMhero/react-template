@@ -1,5 +1,11 @@
-import Template from "components/Template/Template";
+import Router from "components/Router/Router";
 
-const App = () => <Template />;
+import styles from "./styles.css";
+
+const App = () => (
+  <div className={styles.root}>
+    <Router />
+  </div>
+);
 
 export default App;

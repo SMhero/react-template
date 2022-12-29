@@ -1,0 +1,39 @@
+import { FC } from "react";
+import cn from "classnames";
+
+import { NavLink } from "react-router-dom";
+import { routes } from "config/routes";
+
+import styles from "./styles.css";
+
+const Nav: FC = () => {
+  const getClassNames = (isActive: boolean) =>
+    cn(styles.link, {
+      [styles.active]: isActive,
+    });
+
+  return (
+    <nav>
+      <ul className={styles.nav}>
+        <li className={styles.item}>
+          <NavLink
+            className={({ isActive }) => getClassNames(isActive)}
+            to={routes.main}
+          >
+            Main
+          </NavLink>
+        </li>
+        <li className={styles.item}>
+          <NavLink
+            className={({ isActive }) => getClassNames(isActive)}
+            to={routes.about}
+          >
+            About
+          </NavLink>
+        </li>
+      </ul>
+    </nav>
+  );
+};
+
+export default Nav;
