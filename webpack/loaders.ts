@@ -1,8 +1,9 @@
-import path from "path";
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import postCssAutoprefixer from "autoprefixer";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import postCssImport from "postcss-import";
 import postCssPresetEnv from "postcss-preset-env";
+
+import path from "path";
 
 const sourcePath = path.join(__dirname, "..", "src");
 

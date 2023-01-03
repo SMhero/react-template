@@ -32,12 +32,12 @@ module.exports = {
   ],
   rules: {
     "arrow-body-style": ["warn", "as-needed"],
-    "arrow-parens": [2, "as-needed", { requireForBlockBody: true }],
+    "arrow-parens": ["error", "as-needed", { requireForBlockBody: true }],
     "object-curly-newline": [
       "error",
       {
-        consistent: true,
         multiline: true,
+        consistent: true,
       },
     ],
     "import/no-unresolved": [
@@ -91,13 +91,13 @@ module.exports = {
       },
     ],
     "no-multiple-empty-lines": ["error", { max: 1, maxEOF: 1 }],
-    "jsx-a11y/no-static-element-interactions": 0,
-    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "react/react-in-jsx-scope": 0,
+    "react/react-in-jsx-scope": "off",
     "react/sort-comp": [
-      1,
+      "warn",
       {
         order: [
           "type-annotations",
@@ -108,6 +108,19 @@ module.exports = {
         ],
       },
     ],
+    "react/function-component-definition": [
+      "error",
+      { namedComponents: ["arrow-function"] },
+    ],
+    "padding-line-between-statements": [
+      "error",
+      {
+        blankLine: "always",
+        prev: ["const", "let", "block-like"],
+        next: "block-like",
+      },
+      { blankLine: "always", prev: ["block-like"], next: "*" },
+    ],
     "sort-imports": [
       "error",
       {
@@ -115,7 +128,7 @@ module.exports = {
         ignoreDeclarationSort: true,
       },
     ],
-    "@typescript-eslint/ban-ts-comment": 0,
+    "@typescript-eslint/ban-ts-comment": "off",
   },
   settings: {
     "import/parsers": {

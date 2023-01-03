@@ -1,8 +1,9 @@
-import path from "path";
-import webpack from "webpack";
-import webpackDevServer from "webpack-dev-server";
 import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
 import TerserPlugin from "terser-webpack-plugin";
+import webpack from "webpack";
+import webpackDevServer from "webpack-dev-server";
+
+import path from "path";
 
 import externals from "./webpack/externals";
 import loaders from "./webpack/loaders";
