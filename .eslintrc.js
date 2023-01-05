@@ -75,12 +75,10 @@ module.exports = {
           {
             pattern: "assets/**",
             group: "internal",
-            position: "after",
           },
           {
             pattern: "typings/**",
             group: "internal",
-            position: "after",
           },
         ],
         alphabetize: {

@@ -21,7 +21,8 @@
     "baseUrl": "src",
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "lib": ["es6", "dom"],
+    "lib": ["ES2022", "DOM"],
+    "module": "commonjs",
     "moduleResolution": "node",
     "noImplicitAny": true,
     "noImplicitReturns": true,
@@ -29,16 +30,18 @@
     "outDir": "./dist",
     "sourceMap": true,
     "strictNullChecks": true,
-    "target": "es5",
+    "target": "ES6",
     "typeRoots": ["./node_modules/@types", "./typings"],
     "paths": {
       "*": ["node_modules/@types", "./typings/*"],
+      "api/*": ["./api/*"],
       "assets/*": ["./assets/*"],
       "components/*": ["./components/*"],
       "config/*": ["./config/*"],
       "modules/*": ["./modules/*"],
       "pages/*": ["./pages/*"],
-      "typings/*": ["./typings/*"]
+      "typings/*": ["./typings/*"],
+      "utils/*": ["./utils/*"]
     }
   },
   "include": [
