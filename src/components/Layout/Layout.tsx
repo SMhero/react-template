@@ -1,10 +1,11 @@
+import { FC } from "react";
 import { Outlet } from "react-router-dom";
 
 import Nav from "components/Nav/Nav";
 
 import styles from "./styles.css";
 
-const Layout = () => (
+const Layout: FC = () => (
   <div className={styles.root}>
     <Nav />
     <Outlet />

@@ -13,3 +13,73 @@
   color: var(--color-highlight);
   max-width: 100px;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 24px;
+
+  & .content-top {
+    align-items: center;
+    column-gap: 16px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.button {
+  background: var(--color-primary);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--color-white);
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: border-color 0.16s ease-in-out;
+
+  &:hover {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+  }
+}
+
+.spinner {
+  height: auto;
+  margin-top: 16px;
+}
+
+.error {
+  background-color: var(--color-error);
+  border-radius: 12px;
+  color: var(--color-white);
+  padding: 16px;
+}
+
+.error-button {
+  /* @NOTE: think about @extend feature in postCSS */
+  margin-left: 16px;
+}
+
+.data {
+  opacity: 0;
+  transition: opacity 600ms ease-in-out;
+}
+
+.data-entering,
+.data-entered {
+  opacity: 1;
+}
+
+.data-exiting,
+.data-exited {
+  opacity: 0;
+}
+
+.no-data {
+  margin-top: 16px;
+}
+
+.code {
+  background-color: var(--color-primary-dark);
+  padding: 16px;
+  border-radius: 8px;
+}

@@ -1,3 +1,4 @@
+import { FC } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -30,7 +31,7 @@ const router = createBrowserRouter(
   )
 );
 
-const Router = () => (
+const Router: FC = () => (
   <RouterProvider fallbackElement={<Spinner />} router={router} />
 );
 

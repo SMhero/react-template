@@ -1,7 +1,5 @@
 import { get } from "utils/request";
 
-const USERS_URL = "https://jsonplaceholder.typicode.com/users";
-
 export type Users = {
   address: {
     city: string;
@@ -25,5 +23,7 @@ export type Users = {
   username: string;
   website: string;
 };
+
+const USERS_URL = "https://jsonplaceholder.typicode.com/users";
 
 export const getUsers = () => get<Users[]>(USERS_URL);
