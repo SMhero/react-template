@@ -1,6 +1,6 @@
+import { useQuery } from "@tanstack/react-query";
 import cn from "classnames";
 import { FC, useMemo, useRef, useState } from "react";
-import { useQuery } from "react-query";
 import { Transition, TransitionStatus } from "react-transition-group";
 
 import { getUsers, Users } from "api/users";
@@ -27,10 +27,10 @@ const TRANSITION_TYPE = "ease-in-out";
 const Template: FC = () => {
   const [isDataShow, setIsDataShow] = useState<boolean>(false);
   const dataRef = useRef<HTMLDivElement | null>(null);
-  const { data, isLoading, error, refetch, dataUpdatedAt } = useQuery<
+  const { data, isFetching, error, refetch, dataUpdatedAt } = useQuery<
     Users[],
     Error
-  >("users", getUsers, {
+  >(["users"], getUsers, {
     enabled: false,
     onSuccess: () => {
       setIsDataShow(true);
@@ -80,7 +80,7 @@ const Template: FC = () => {
       );
     }
 
-    if (isLoading) {
+    if (isFetching) {
       return <Spinner className={styles.spinner} />;
     }
 

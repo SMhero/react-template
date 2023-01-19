@@ -41,6 +41,7 @@
       "modules/*": ["./modules/*"],
       "pages/*": ["./pages/*"],
       "typings/*": ["./typings/*"],
+      "tests/*": ["./tests/*"],
       "utils/*": ["./utils/*"]
     }
   },
@@ -48,7 +49,8 @@
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.d.ts",
-    "webpack/**/*.ts"
+    "webpack/**/*.ts",
+    "./jest-setup.ts"
   ],
   "exclude": ["node_modules", "build"]
 }

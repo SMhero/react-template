@@ -19,7 +19,7 @@ module.exports = api => {
         ],
         presets: [
           [
-            "@babel/env",
+            "@babel/preset-env",
             {
               modules: false,
             },
@@ -31,7 +31,7 @@ module.exports = api => {
             },
           ],
           [
-            "@babel/typescript",
+            "@babel/preset-typescript",
             {
               allExtensions: true,
               isTSX: true,
@@ -58,7 +58,7 @@ module.exports = api => {
             },
           ],
           [
-            "@babel/typescript",
+            "@babel/preset-typescript",
             {
               allExtensions: true,
               isTSX: true,

@@ -108,7 +108,7 @@ module.exports = {
     ],
     "react/function-component-definition": [
       "error",
-      { namedComponents: ["arrow-function"] },
+      { namedComponents: ["arrow-function", "function-declaration"] },
     ],
     "padding-line-between-statements": [
       "error",
