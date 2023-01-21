@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import cn from "classnames";
-import { FC, useMemo, useRef, useState } from "react";
+import { FC, useRef, useState } from "react";
 import { Transition, TransitionStatus } from "react-transition-group";
 
 import { getUsers, Users } from "api/users";
@@ -37,13 +37,10 @@ const Template: FC = () => {
     },
   });
 
-  const requestTime = useMemo<string>(
-    () =>
-      dataUpdatedAt
-        ? new Date(dataUpdatedAt).toLocaleTimeString()
-        : "not requested yet",
-    [dataUpdatedAt]
-  );
+  const requestTime = dataUpdatedAt
+    ? new Date(dataUpdatedAt).toLocaleTimeString()
+    : "not requested yet";
+  const isSubmitBtnDisabled = Boolean(!data || error);
 
   const getStyles = (state: TransitionStatus): React.CSSProperties => {
     const isExited = state === "exited" || state === "exiting";
@@ -124,6 +121,7 @@ const Template: FC = () => {
           </button>
           <button
             className={styles.button}
+            disabled={isSubmitBtnDisabled}
             onClick={() => setIsDataShow(!isDataShow)}
             type="submit"
           >

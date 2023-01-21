@@ -40,6 +40,15 @@
   &:hover {
     border: 1px solid rgba(255, 255, 255, 0.4);
   }
+
+  &:disabled {
+    background: rgba(0, 116, 166, 0.3);
+    cursor: not-allowed;
+
+    &:hover {
+      border: 1px solid transparent;
+    }
+  }
 }
 
 .spinner {
@@ -51,7 +60,9 @@
   background-color: var(--color-error);
   border-radius: 12px;
   color: var(--color-white);
+  margin-top: 16px;
   padding: 16px;
+  text-align: center;
 }
 
 .error-button {

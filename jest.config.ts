@@ -10,7 +10,7 @@ const config: Config.InitialOptions = {
   preset: "ts-jest",
   roots: ["<rootDir>/src"],
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  setupFilesAfterEnv: ["<rootDir>/src/tests/setupTests.ts"],
   testPathIgnorePatterns: ["<rootDir>/node_modules/"],
   testMatch: ["**/components/**/?(*.)+(spec|test).+(ts|tsx)"],
   transform: {

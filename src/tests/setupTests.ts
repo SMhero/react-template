@@ -1,12 +1,8 @@
 import "@testing-library/jest-dom";
-import { rest } from "msw";
+
 import { setupServer } from "msw/node";
 
-const handlers = [
-  rest.get("*/users", (_, res, ctx) => {
-    res(ctx.status(200));
-  }),
-];
+import { handlers } from "__mocks__/mswMock";
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
