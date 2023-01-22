@@ -26,7 +26,6 @@ const TRANSITION_TYPE = "ease-in-out";
 
 const Template: FC = () => {
   const [isDataShow, setIsDataShow] = useState<boolean>(false);
-  const dataRef = useRef<HTMLDivElement | null>(null);
   const { data, isFetching, error, refetch, dataUpdatedAt } = useQuery<
     Users[],
     Error
@@ -36,11 +35,12 @@ const Template: FC = () => {
       setIsDataShow(true);
     },
   });
+  const dataRef = useRef<HTMLDivElement | null>(null);
 
   const requestTime = dataUpdatedAt
     ? new Date(dataUpdatedAt).toLocaleTimeString()
     : "not requested yet";
-  const isSubmitBtnDisabled = Boolean(!data || error);
+  const isSubmitBtnDisabled = !!error;
 
   const getStyles = (state: TransitionStatus): React.CSSProperties => {
     const isExited = state === "exited" || state === "exiting";

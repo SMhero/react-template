@@ -13,7 +13,13 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
   ],
-  overrides: [],
+  overrides: [
+    {
+      files: ["**/*.test.*"],
+      plugins: ["jest"],
+      extends: ["plugin:jest/recommended"],
+    },
+  ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: "latest",

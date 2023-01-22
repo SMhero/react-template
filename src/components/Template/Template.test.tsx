@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import "@testing-library/jest-dom";
-import { fireEvent, renderHook, screen, waitFor } from "@testing-library/react";
+import { renderHook, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { rest } from "msw";
 
@@ -16,10 +16,11 @@ const mockedUsers = [
 ];
 
 describe("Template", () => {
-  it("renders properly", () => {
+  it("renders properly", async () => {
     renderWithClient(<Template />);
 
-    fireEvent.click(screen.getByText("Show data"));
+    await userEvent.click(screen.getByText("Show data"));
+
     expect(
       screen.getByText("No data here... Try to push submit button!")
     ).toBeVisible();
