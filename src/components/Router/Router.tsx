@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -8,22 +8,16 @@ import {
 
 import Layout from "components/Layout/Layout";
 import Spinner from "components/Spinner/Spinner";
-import About from "pages/About/About";
-import Main from "pages/Main";
-import NotFound from "pages/NotFound";
 
 import { routes } from "config/routes";
 
-// @NOTE: just an example of loading page state
-const mainLoader = async () => {
-  await new Promise(r => setTimeout(r, 1000));
-
-  return {};
-};
+const About = lazy(() => import("pages/About"));
+const Main = lazy(() => import("pages/Main"));
+const NotFound = lazy(() => import("pages/NotFound"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path={routes.main} element={<Layout />} loader={mainLoader}>
+    <Route path={routes.main} element={<Layout />}>
       <Route index element={<Main />} />
       <Route path={routes.about} element={<About />} />
       <Route path={routes.notFound} element={<NotFound />} />
@@ -32,7 +26,9 @@ const router = createBrowserRouter(
 );
 
 const Router: FC = () => (
-  <RouterProvider fallbackElement={<Spinner />} router={router} />
+  <Suspense fallback={<Spinner />}>
+    <RouterProvider router={router} />
+  </Suspense>
 );
 
 export default Router;
