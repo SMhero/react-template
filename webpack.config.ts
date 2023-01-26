@@ -1,5 +1,3 @@
-import CssMinimizerPlugin from "css-minimizer-webpack-plugin";
-import TerserPlugin from "terser-webpack-plugin";
 import webpack from "webpack";
 import webpackDevServer from "webpack-dev-server";
 
@@ -7,6 +5,7 @@ import path from "path";
 
 import externals from "./webpack/externals";
 import loaders from "./webpack/loaders";
+import optimization from "./webpack/optimization";
 import plugins from "./webpack/plugins";
 
 interface Configuration extends webpack.Configuration {
@@ -22,6 +21,7 @@ const hints = isProd ? "warning" : false;
 const externalsRules = externals(process.env.NODE_ENV);
 const loadersRules = loaders(process.env.NODE_ENV);
 const pluginsRules = plugins(process.env.NODE_ENV);
+const optimizationRules = optimization(process.env.NODE_ENV);
 
 const config = (): Configuration => ({
   devtool,
@@ -41,21 +41,11 @@ const config = (): Configuration => ({
   },
   output: {
     clean: true,
-    filename: "js/chunk-[contenthash].js",
+    filename: "[name].[contenthash].js",
     path: path.resolve(__dirname, "dist"),
   },
   plugins: pluginsRules,
-  optimization: {
-    minimize: true,
-    minimizer: isProd
-      ? [
-          new CssMinimizerPlugin(),
-          new TerserPlugin({
-            test: /\.(j|t)sx?$/,
-          }),
-        ]
-      : [],
-  },
+  optimization: optimizationRules,
   devServer: {
     compress: true,
     historyApiFallback: true,

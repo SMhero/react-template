@@ -4,13 +4,14 @@
   "description": "Template for frontend applications based on ReactJS",
   "scripts": {
     "build": "webpack --mode production --progress",
+    "build-stats": "webpack --json stats.json",
     "lint:css": "`npm bin`/stylelint \"src/**/*.css\" --formatter verbose",
     "lint:js": "`npm bin`/eslint src \"src/**/*.{ts,tsx}\"",
     "lint": "npm run lint:js && npm run lint:css",
-    "test": "jest",
     "prettier:check": "`npm bin`/prettier --check \"src/**/*.{ts,tsx,css}\"",
     "prettier:write": "`npm bin`/prettier --write \"src/**/*.{ts,tsx,css}\"",
-    "start": "webpack serve --config webpack.config.ts"
+    "start": "webpack serve --config webpack.config.ts",
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/dotenv-webpack": "^7.0.3",
     "@types/jest": "^29.2.5",
     "@types/node": "^18.11.2",
     "@types/postcss-import": "^14.0.0",
@@ -64,6 +66,7 @@
     "compression-webpack-plugin": "^10.0.0",
     "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^4.2.2",
+    "dotenv-webpack": "^8.0.1",
     "eslint": "^8.28.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-import-resolver-typescript": "^3.5.2",

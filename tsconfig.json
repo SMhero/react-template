@@ -33,7 +33,6 @@
     "target": "ES6",
     "typeRoots": ["./node_modules/@types", "./typings"],
     "paths": {
-      "*": ["node_modules/@types", "./typings/*"],
       "__mocks__/*": ["./__mocks__/*"],
       "api/*": ["./api/*"],
       "assets/*": ["./assets/*"],
