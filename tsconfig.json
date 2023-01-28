@@ -50,7 +50,7 @@
     "src/**/*.tsx",
     "src/**/*.d.ts",
     "webpack/**/*.ts",
-    "./jest-setup.ts"
+    "./webpack.config.ts"
   ],
   "exclude": ["node_modules", "build"]
 }

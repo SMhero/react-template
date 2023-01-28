@@ -23,12 +23,11 @@ const optimization = (NODE_ENV: NodeJS.ProcessEnv["NODE_ENV"]) => {
     result.splitChunks = {
       cacheGroups: {
         vendor: {
+          chunks: "all",
           test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
         },
       },
-      chunks: "all",
-      minChunks: 2,
-      minSize: 10240,
     };
   }
 
