@@ -47,7 +47,7 @@ const config = (env: Env): Configuration => {
     },
     output: {
       clean: true,
-      filename: "[name].[contenthash].js",
+      filename: "static/[name].[contenthash].js",
       path: path.resolve(__dirname, "dist"),
     },
     plugins: pluginsRules,

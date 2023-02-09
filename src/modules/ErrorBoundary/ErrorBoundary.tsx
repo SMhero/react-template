@@ -43,9 +43,7 @@ class ErrorBoundary extends Component<Props, State> {
           <h1 className={styles.title}>Something went wrong...</h1>
           {this.state.error ? (
             <div className={styles.description}>
-              <code className={styles.code}>
-                Error: {this.state.error.message}
-              </code>
+              <code className={styles.code}>Error: {this.state.error.message}</code>
             </div>
           ) : null}
         </div>

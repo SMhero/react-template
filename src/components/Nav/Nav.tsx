@@ -16,18 +16,12 @@ const Nav: FC = () => {
     <nav>
       <ul className={styles.nav}>
         <li className={styles.item}>
-          <NavLink
-            className={({ isActive }) => getClassNames(isActive)}
-            to={routes.main}
-          >
+          <NavLink className={({ isActive }) => getClassNames(isActive)} to={routes.main}>
             Main
           </NavLink>
         </li>
         <li className={styles.item}>
-          <NavLink
-            className={({ isActive }) => getClassNames(isActive)}
-            to={routes.about}
-          >
+          <NavLink className={({ isActive }) => getClassNames(isActive)} to={routes.about}>
             About
           </NavLink>
         </li>

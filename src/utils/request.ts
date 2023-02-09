@@ -7,18 +7,14 @@ const onServerError = (response: AxiosResponse) => {
 };
 
 const onAxiosError = (error: unknown) => {
-  throw new Error(
-    axios.isAxiosError(error) ? error.message : "An unexpected error occurred",
-    { cause: error }
-  );
+  throw new Error(axios.isAxiosError(error) ? error.message : "An unexpected error occurred", {
+    cause: error,
+  });
 };
 
 export const get = async <Response>(url: string): Promise<Response> => {
   try {
-    const response = await axios.get<
-      Response,
-      AxiosResponse<Response, unknown>
-    >(url);
+    const response = await axios.get<Response, AxiosResponse<Response, unknown>>(url);
 
     onServerError(response);
 
@@ -28,15 +24,9 @@ export const get = async <Response>(url: string): Promise<Response> => {
   }
 };
 
-export const post = async <Response, Data>(
-  url: string,
-  data: Data
-): Promise<Response> => {
+export const post = async <Response, Data>(url: string, data: Data): Promise<Response> => {
   try {
-    const response = await axios.post<Response, AxiosResponse<Response, Data>>(
-      url,
-      data
-    );
+    const response = await axios.post<Response, AxiosResponse<Response, Data>>(url, data);
 
     onServerError(response);
 

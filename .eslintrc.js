@@ -28,16 +28,9 @@ module.exports = {
     },
     sourceType: "module",
   },
-  plugins: [
-    "react",
-    "@typescript-eslint",
-    "react-hooks",
-    "import",
-    "jsx-a11y",
-    "prettier",
-  ],
+  plugins: ["react", "@typescript-eslint", "react-hooks", "import", "jsx-a11y", "prettier"],
   rules: {
-    "arrow-body-style": ["warn", "as-needed"],
+    "arrow-body-style": "warn",
     "arrow-parens": ["error", "as-needed", { requireForBlockBody: true }],
     "object-curly-newline": [
       "error",
@@ -55,14 +48,7 @@ module.exports = {
     "import/order": [
       1,
       {
-        groups: [
-          "external",
-          "builtin",
-          "internal",
-          "sibling",
-          "parent",
-          "index",
-        ],
+        groups: ["external", "builtin", "internal", "sibling", "parent", "index"],
         "newlines-between": "always-and-inside-groups",
         pathGroups: [
           {
@@ -103,13 +89,7 @@ module.exports = {
     "react/sort-comp": [
       "warn",
       {
-        order: [
-          "type-annotations",
-          "static-methods",
-          "lifecycle",
-          "everything-else",
-          "render",
-        ],
+        order: ["type-annotations", "static-methods", "lifecycle", "everything-else", "render"],
       },
     ],
     "react/function-component-definition": [

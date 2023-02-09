@@ -1,6 +1,6 @@
-# React Template
+# React Template 📦 ⚛️
 
-Template for frontend applications based on ReactJS. It inspired by problems of beginning a new project when you need a quick start with an standart frontend stack (as ReactJS is) and you won't think about how to implements that right.
+Template for frontend applications based on ReactJS. It inspired by problems of beginning a new project when you need a quick start with an standart frontend stack (as ReactJS is) and you don't want to think about how to implements that right.
 
 ### Stack
 

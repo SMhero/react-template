@@ -25,16 +25,10 @@ export const renderWithClient = (ui: React.ReactElement) => {
   return {
     ...result,
     rerender: (rerenderUi: React.ReactElement) =>
-      rerender(
-        <QueryClientProvider client={testQueryClient}>
-          {rerenderUi}
-        </QueryClientProvider>
-      ),
+      rerender(<QueryClientProvider client={testQueryClient}>{rerenderUi}</QueryClientProvider>),
   };
 };
 
 export const createWrapper = ({ children }: { children: React.ReactNode }) => (
-  <QueryClientProvider client={createTestQueryClient()}>
-    {children}
-  </QueryClientProvider>
+  <QueryClientProvider client={createTestQueryClient()}>{children}</QueryClientProvider>
 );

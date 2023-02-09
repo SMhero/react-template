@@ -26,15 +26,16 @@ const TRANSITION_TYPE = "ease-in-out";
 
 const Template: FC = () => {
   const [isDataShow, setIsDataShow] = useState<boolean>(false);
-  const { data, isFetching, error, refetch, dataUpdatedAt } = useQuery<
-    Users[],
-    Error
-  >(["users"], getUsers, {
-    enabled: false,
-    onSuccess: () => {
-      setIsDataShow(true);
-    },
-  });
+  const { data, isFetching, error, refetch, dataUpdatedAt } = useQuery<Users[], Error>(
+    ["users"],
+    getUsers,
+    {
+      enabled: false,
+      onSuccess: () => {
+        setIsDataShow(true);
+      },
+    }
+  );
   const dataRef = useRef<HTMLDivElement | null>(null);
 
   const requestTime = dataUpdatedAt
@@ -44,16 +45,12 @@ const Template: FC = () => {
 
   const getStyles = (state: TransitionStatus): React.CSSProperties => {
     const isExited = state === "exited" || state === "exiting";
-    const transform = isExited
-      ? `translateY(${-DISTANCE}px)`
-      : "translateY(0px)";
+    const transform = isExited ? `translateY(${-DISTANCE}px)` : "translateY(0px)";
 
     return {
       transform,
       transition: `transform 240ms ${TRANSITION_TYPE},
-        opacity ${OPACITY_TIMEOUT}ms ${TRANSITION_TYPE} ${
-        OPACITY_TIMEOUT - ANIMATION_STEP
-      }ms`,
+        opacity ${OPACITY_TIMEOUT}ms ${TRANSITION_TYPE} ${OPACITY_TIMEOUT - ANIMATION_STEP}ms`,
     };
   };
 
@@ -66,11 +63,7 @@ const Template: FC = () => {
       return (
         <div className={styles.error}>
           {String(error.cause)}
-          <button
-            className={cn(styles.button, styles.errorButton)}
-            onClick={onClick}
-            type="submit"
-          >
+          <button className={cn(styles.button, styles.errorButton)} onClick={onClick} type="submit">
             Try again
           </button>
         </div>
@@ -82,12 +75,7 @@ const Template: FC = () => {
     }
 
     return (
-      <Transition
-        nodeRef={dataRef}
-        in={isDataShow}
-        timeout={ANIMATION_TIMEOUT}
-        unmountOnExit
-      >
+      <Transition nodeRef={dataRef} in={isDataShow} timeout={ANIMATION_TIMEOUT} unmountOnExit>
         {state => (
           <div
             ref={dataRef}

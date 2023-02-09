@@ -21,17 +21,11 @@ describe("Template", () => {
 
     await userEvent.click(screen.getByText("Show data"));
 
-    expect(
-      screen.getByText("No data here... Try to push submit button!")
-    ).toBeVisible();
+    expect(screen.getByText("No data here... Try to push submit button!")).toBeVisible();
   });
 
   it("loads data", async () => {
-    server.use(
-      rest.get("*/users", (_, res, ctx) =>
-        res(ctx.status(200), ctx.json(mockedUsers))
-      )
-    );
+    server.use(rest.get("*/users", (_, res, ctx) => res(ctx.status(200), ctx.json(mockedUsers))));
 
     const { container } = renderWithClient(<Template />);
 

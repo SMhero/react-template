@@ -78,10 +78,10 @@ const loaders = (NODE_ENV: NodeJS.ProcessEnv["NODE_ENV"]) => [
     use: ["@svgr/webpack"],
   },
   {
-    test: /\.(woff|woff2|eot|ttf|otf)$/i,
+    test: /\.(woff|woff2|eot|ttf)$/i,
     type: "asset/resource",
     generator: {
-      filename: "fonts/[name][ext][query]",
+      filename: "[name][ext][query]",
     },
   },
 ];
