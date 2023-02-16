@@ -28,10 +28,7 @@ const loaders = (NODE_ENV: NodeJS.ProcessEnv["NODE_ENV"]) => [
     exclude: /node_modules/,
     use: [
       {
-        loader:
-          NODE_ENV === "production"
-            ? MiniCssExtractPlugin.loader
-            : "style-loader",
+        loader: NODE_ENV === "production" ? MiniCssExtractPlugin.loader : "style-loader",
       },
       {
         loader: "css-loader",
@@ -51,6 +48,7 @@ const loaders = (NODE_ENV: NodeJS.ProcessEnv["NODE_ENV"]) => [
             plugins: [
               postCssAutoprefixer(),
               postCssImport({ path: sourcePath }),
+              // https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/FEATURES.md
               postCssPresetEnv({
                 features: {
                   "nesting-rules": true,

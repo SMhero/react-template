@@ -9,7 +9,7 @@
   --color-primary: #0074a6;
   --color-primary-dark: #5468ff;
   --color-highlight: #149eca;
-  --color-error: rgb(182, 87, 0, 0.4);
+  --color-error: rgb(182 87 0 / 40%);
 
   /* Indexes */
   --z-index-negative: -1;

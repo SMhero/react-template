@@ -2,7 +2,8 @@
   column-gap: 16px;
   display: flex;
   justify-content: center;
-  padding: 0;
+  margin: 0;
+  padding: 16px 0;
 }
 
 .item {

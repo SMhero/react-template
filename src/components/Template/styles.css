@@ -38,11 +38,11 @@
   transition: border-color 0.16s ease-in-out;
 
   &:hover {
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    border: 1px solid rgb(255 255 255 / 40%);
   }
 
   &:disabled {
-    background: rgba(0, 116, 166, 0.3);
+    background: rgb(0 116 166 / 30%);
     cursor: not-allowed;
 
     &:hover {
@@ -53,7 +53,7 @@
 
 .spinner {
   height: auto;
-  margin-top: 16px;
+  margin-top: 24px;
 }
 
 .error {

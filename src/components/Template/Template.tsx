@@ -4,7 +4,6 @@ import { FC, useRef, useState } from "react";
 import { Transition, TransitionStatus } from "react-transition-group";
 
 import { getUsers, Users } from "api/users";
-import TemplateIcon from "assets/images/react-template.svg";
 import Spinner from "components/Spinner/Spinner";
 
 import styles from "./styles.css";
@@ -96,28 +95,22 @@ const Template: FC = () => {
   };
 
   return (
-    <div>
-      <div className={styles.title}>
-        <TemplateIcon className={styles.logo} width={68} height={68} />
-        <h1 className={styles.titleText}>React Template</h1>
+    <div className={styles.content}>
+      <div className={styles.contentTop}>
+        <span>The last request time: {requestTime}</span>
+        <button className={styles.button} onClick={onClick} type="submit">
+          Submit
+        </button>
+        <button
+          className={styles.button}
+          disabled={isSubmitBtnDisabled}
+          onClick={() => setIsDataShow(!isDataShow)}
+          type="submit"
+        >
+          {isDataShow ? "Hide data" : "Show data"}
+        </button>
       </div>
-      <div className={styles.content}>
-        <div className={styles.contentTop}>
-          <span>The last request time: {requestTime}</span>
-          <button className={styles.button} onClick={onClick} type="submit">
-            Submit
-          </button>
-          <button
-            className={styles.button}
-            disabled={isSubmitBtnDisabled}
-            onClick={() => setIsDataShow(!isDataShow)}
-            type="submit"
-          >
-            {isDataShow ? "Hide data" : "Show data"}
-          </button>
-        </div>
-        {renderContent()}
-      </div>
+      {renderContent()}
     </div>
   );
 };
