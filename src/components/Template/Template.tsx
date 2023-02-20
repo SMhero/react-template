@@ -4,6 +4,7 @@ import { FC, useRef, useState } from "react";
 import { Transition, TransitionStatus } from "react-transition-group";
 
 import { getUsers, Users } from "api/users";
+import Button from "components/Button/Button";
 import Spinner from "components/Spinner/Spinner";
 
 import styles from "./styles.css";
@@ -62,9 +63,9 @@ const Template: FC = () => {
       return (
         <div className={styles.error}>
           {String(error.cause)}
-          <button className={cn(styles.button, styles.errorButton)} onClick={onClick} type="submit">
+          <Button className={cn(styles.button, styles.errorButton)} onClick={onClick} type="submit">
             Try again
-          </button>
+          </Button>
         </div>
       );
     }
@@ -98,17 +99,17 @@ const Template: FC = () => {
     <div className={styles.content}>
       <div className={styles.contentTop}>
         <span>The last request time: {requestTime}</span>
-        <button className={styles.button} onClick={onClick} type="submit">
+        <Button className={styles.button} onClick={onClick} type="submit">
           Submit
-        </button>
-        <button
+        </Button>
+        <Button
           className={styles.button}
           disabled={isSubmitBtnDisabled}
           onClick={() => setIsDataShow(!isDataShow)}
           type="submit"
         >
           {isDataShow ? "Hide data" : "Show data"}
-        </button>
+        </Button>
       </div>
       {renderContent()}
     </div>

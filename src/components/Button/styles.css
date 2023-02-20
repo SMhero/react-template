@@ -1,0 +1,22 @@
+.button {
+  background: var(--color-primary);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--color-white);
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: border-color 0.16s ease-in-out;
+
+  &:hover {
+    border: 1px solid rgb(255 255 255 / 40%);
+  }
+
+  &:disabled {
+    background: rgb(0 116 166 / 30%);
+    cursor: not-allowed;
+
+    &:hover {
+      border: 1px solid transparent;
+    }
+  }
+}

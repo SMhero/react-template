@@ -21,6 +21,11 @@ const Nav: FC = () => {
           </NavLink>
         </li>
         <li className={styles.item}>
+          <NavLink className={({ isActive }) => getClassNames(isActive)} to={routes.report}>
+            Report
+          </NavLink>
+        </li>
+        <li className={styles.item}>
           <NavLink className={({ isActive }) => getClassNames(isActive)} to={routes.about}>
             About
           </NavLink>
