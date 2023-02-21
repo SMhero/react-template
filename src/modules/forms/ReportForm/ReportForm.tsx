@@ -7,10 +7,9 @@ import Button from "components/Button/Button";
 
 import styles from "./styles.css";
 
-// @NOTE: WIP
 const FormSchema = z.object({
-  firstName: z.string().min(4, { message: "Field is required" }).nullable(),
-  lastName: z.string().min(4, { message: "Field is required" }).nullable(),
+  name: z.string().min(4, { message: "Field has at least 4 characters" }),
+  email: z.string().email({ message: "Field must be a valid email" }),
 });
 
 type FormData = z.infer<typeof FormSchema>;
@@ -27,19 +26,19 @@ const ReportForm: FC = () => {
   const onSubmit = handleSubmit(data => alert(JSON.stringify(data)));
 
   return (
-    <form className={styles.form} onSubmit={onSubmit}>
-      <label className={styles.field} htmlFor="firstName">
-        <span className={styles.fieldLabel}>First name</span>
-        <input {...register("firstName")} className={styles.input} autoComplete="off" />
-        {errors.firstName?.message && (
-          <span className={styles.errorMessage}>{errors.firstName?.message}</span>
+    <form className={styles.form} onSubmit={onSubmit} autoComplete="off" noValidate>
+      <label className={styles.field} htmlFor="name">
+        <span className={styles.fieldLabel}>Name</span>
+        <input {...register("name")} className={styles.input} />
+        {errors.name?.message && (
+          <span className={styles.errorMessage}>{errors.name?.message}</span>
         )}
       </label>
-      <label className={styles.field} htmlFor="firstName">
-        <span className={styles.fieldLabel}>Last name</span>
-        <input {...register("lastName")} className={styles.input} autoComplete="off" />
-        {errors.lastName?.message && (
-          <span className={styles.errorMessage}>{errors.lastName?.message}</span>
+      <label className={styles.field} htmlFor="email">
+        <span className={styles.fieldLabel}>E-mail</span>
+        <input {...register("email")} className={styles.input} />
+        {errors.email?.message && (
+          <span className={styles.errorMessage}>{errors.email?.message}</span>
         )}
       </label>
       <Button type="submit">Submit</Button>
