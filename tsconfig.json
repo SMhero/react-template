@@ -1,56 +1,10 @@
 {
-  "compileOnSave": true,
-  "ts-node": {
-    "compilerOptions": {
-      "module": "CommonJS",
-      "esModuleInterop": true
-    }
-  },
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "typescript-plugin-css-modules",
-        "options": {
-          "classnameTransform": "dashes",
-          "customMatcher": "\\.css$"
-        }
-      }
-    ],
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
-    "esModuleInterop": true,
-    "jsx": "react-jsx",
-    "lib": ["ES2022", "DOM"],
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "outDir": "./dist",
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "target": "ES6",
-    "typeRoots": ["./node_modules/@types", "./typings"],
+    "baseUrl": ".",
     "paths": {
-      "__mocks__/*": ["./__mocks__/*"],
-      "api/*": ["./api/*"],
-      "assets/*": ["./assets/*"],
-      "components/*": ["./components/*"],
-      "config/*": ["./config/*"],
-      "modules/*": ["./modules/*"],
-      "pages/*": ["./pages/*"],
-      "typings/*": ["./typings/*"],
-      "tests/*": ["./tests/*"],
-      "utils/*": ["./utils/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.d.ts",
-    "webpack/**/*.ts",
-    "./webpack.config.ts"
-  ],
-  "exclude": ["node_modules", "build"]
+  "files": [],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
 }

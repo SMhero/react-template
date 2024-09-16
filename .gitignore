@@ -1,24 +1,24 @@
 # Logs
-.DS_Store
 logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 lerna-debug.log*
 
-# Dependency directories
-node_modules/
-jspm_packages/
-
-# Optional npm cache directory
-.npm
-.vscode
-
-# dotenv environment variables file
-.env
-.env.test
-
-# Build / generate output
+node_modules
 dist
-output
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

@@ -1,20 +1,9 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { QueryClientProvider } from "@tanstack/react-query";
 import { render } from "@testing-library/react";
 
-const createTestQueryClient = () =>
-  new QueryClient({
-    defaultOptions: {
-      queries: {
-        retry: false,
-      },
-    },
-    logger: {
-      log: console.log,
-      warn: console.warn,
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      error: () => {},
-    },
-  });
+import { queryClient } from "@/components/providers/QueryClientProvider";
+
+const createTestQueryClient = () => queryClient;
 
 export const renderWithClient = (ui: React.ReactElement) => {
   const testQueryClient = createTestQueryClient();

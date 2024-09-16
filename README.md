@@ -13,10 +13,15 @@ Template for frontend applications based on ReactJS. It inspired by problems of 
 
 ### Commands
 
-- `npm run build` - build the app.
-- `npm run build-stats` - create build stats `json` file for analysis.
-- `npm run lint` - linting of the app. With addional param like `:js` or `:css` you can lint specific files.
-- `npm run prettier:check` - tells pritter check all files and shows errors/warnings.
-- `npm run prettier:write` - fix all errors/warnings in files.
-- `npm run start` - runs dev server.
-- `npm run test` - runs unit tests.
+- `pnpm run build` - build the app.
+- `pnpm run lint` - linting of the app. With addional param like `:js` or `:css` you can lint specific files.
+- `pnpm run dev` - runs dev server.
+
+### In progress
+
+New commands:
+
+- `pnpm run build-stats` - create build stats `json` file for analysis.
+- `pnpm run prettier:check` - tells pritter check all files and shows errors/warnings.
+- `pnpm run prettier:write` - fix all errors/warnings in files.
+- `pnpm run test` - runs unit tests.
