@@ -5,11 +5,12 @@ Template for frontend applications based on ReactJS. It inspired by problems of 
 ### Stack
 
 - `ReactJS`
-- `React Router`
+- `TanStack Router`
 - `TypeScript`
-- `Jest`
+- `Vitest`
 - `Testing Library`
-- `Webpack`
+- `Vite`
+- `MSW`
 
 ### Commands
 
@@ -21,7 +22,7 @@ Template for frontend applications based on ReactJS. It inspired by problems of 
 
 New commands:
 
-- `pnpm run build-stats` - create build stats `json` file for analysis.
 - `pnpm run prettier:check` - tells pritter check all files and shows errors/warnings.
 - `pnpm run prettier:write` - fix all errors/warnings in files.
 - `pnpm run test` - runs unit tests.
+- `pnpm run lint` - runs ESLint.
