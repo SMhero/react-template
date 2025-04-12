@@ -1,10 +1,15 @@
-import { rest } from "msw";
+import { HttpResponse, http } from "msw";
+
+import { User } from "@/types/user";
 
 export const handlers = [
-  rest.get("*/users", (_, res, ctx) => {
-    res(ctx.status(200));
-  }),
-  rest.get("*/users", (_, res, ctx) => {
-    res(ctx.status(500));
+  http.get<never, User[]>("/users", async ({ request }) => {
+    const users = await request.json();
+
+    if (!users) {
+      return new HttpResponse(null, { status: 404 });
+    }
+
+    return HttpResponse.json(users);
   }),
 ];

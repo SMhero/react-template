@@ -13,7 +13,8 @@ export default tseslint.config(
   {
     extends: [
       js.configs.recommended,
-      ...tseslint.configs.recommended,
+      ...tseslint.configs.recommendedTypeChecked,
+      ...tseslint.configs.stylisticTypeChecked,
       eslintPluginPrettier,
       ...reactQuery.configs["flat/recommended"],
     ],
@@ -21,6 +22,10 @@ export default tseslint.config(
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
+      parserOptions: {
+        projectService: true,
+        tsconfigDirName: import.meta.dirname,
+      },
     },
     plugins: {
       "react-hooks": reactHooks,
@@ -30,6 +35,7 @@ export default tseslint.config(
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
+      "@typescript-eslint/consistent-type-definitions": "off",
       "@tanstack/query/exhaustive-deps": "off",
       "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
     },
